@@ -11,23 +11,32 @@ Your goal is to:
 - Evaluate what your system gets right and wrong
 - Reflect on how this mirrors real world AI recommenders
 
-Replace this paragraph with your own summary of what your version does.
+This version of the recommender uses a simple rule-based approach to match songs to a user’s taste. It represents each song with a few musical features and then gives each song a score based on how closely it matches the user’s preferred genre, mood, and energy level.
 
 ---
 
 ## How The System Works
 
-Explain your design in plain language.
+Each song is described with features such as genre, mood, energy, tempo, valence, danceability, and acousticness. The user profile stores the user’s favorite genre, favorite mood, target energy, and whether they tend to like acoustic music.
 
-Some prompts to answer:
+The recommender uses a simple two-step process:
 
-- What features does each `Song` use in your system
-  - For example: genre, mood, energy, tempo
-- What information does your `UserProfile` store
-- How does your `Recommender` compute a score for each song
-- How do you choose which songs to recommend
+- Scoring Rule: score one song based on how well it matches the user profile.
+- Ranking Rule: sort all scored songs and return the best ones first.
 
-You can include a simple diagram or bullet list if helpful.
+### Algorithm Recipe
+
+A good starting point is to give stronger weight to genre than mood, because genre is often a broader signal of taste while mood is more specific. For example:
+
+- +2.0 points for a genre match
+- +1.0 point for a mood match
+- additional similarity points for energy, based on how close the song’s energy is to the user’s target
+
+For the energy feature, the system rewards closeness rather than just “higher” or “lower” values. If a user prefers energy around 0.8, a song at 0.75 should score better than a song at 0.20 because it is closer to the target. This setup helps the system distinguish between very different tastes, such as an intense rock song and a chill lofi song.
+
+### Potential Biases
+
+This system may over prioritize genre and overlook a song that is a great mood match but a different genre. It also uses a small set of rules, so it may not capture more subtle personal taste as well as a more advanced recommender.
 
 ---
 
