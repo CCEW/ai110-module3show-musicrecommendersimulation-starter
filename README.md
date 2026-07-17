@@ -98,6 +98,63 @@ Because: Matched because energy similarity (+1.9); acoustic preference.
 
 City of Spark - Score: 2.77
 Because: Matched because energy similarity (+2.0); acoustic preference.
+
+=== conflicting-mood-energy ===
+
+Top recommendations:
+
+Gym Hero - Score: 4.89
+Because: Matched because genre match (+2.0); energy similarity (+1.9); acoustic preference.
+
+Sunrise City - Score: 4.66
+Because: Matched because genre match (+2.0); energy similarity (+1.8); acoustic preference.
+
+Neon Alley - Score: 2.90
+Because: Matched because energy similarity (+2.0); acoustic preference.
+
+Storm Runner - Score: 2.88
+Because: Matched because energy similarity (+2.0); acoustic preference.
+
+Firelight Parade - Score: 2.76
+Because: Matched because energy similarity (+1.9); acoustic preference.
+
+Summary for conflicting-mood-energy:
+
+Rank  Song                       Score Reason                                                                
+----- ------------------------ ------- ----------------------------------------------------------------------
+1     Gym Hero                    4.89 genre match (+2.0); energy similarity (+1.9); acoustic preference     
+2     Sunrise City                4.66 genre match (+2.0); energy similarity (+1.8); acoustic preference     
+3     Neon Alley                  2.90 energy similarity (+2.0); acoustic preference                         
+4     Storm Runner                2.88 energy similarity (+2.0); acoustic preference                         
+5     Firelight Parade            2.76 energy similarity (+1.9); acoustic preference
+=== acoustic-trap ===
+
+Top recommendations:
+
+Spacewalk Thoughts - Score: 2.76
+Because: Matched because energy similarity (+1.8); acoustic preference.
+
+Storm Runner - Score: 2.68
+Because: Matched because genre match (+2.0); energy similarity (+0.6); acoustic preference.
+
+Midnight Waltz - Score: 2.62
+Because: Matched because energy similarity (+1.7); acoustic preference.
+
+Library Rain - Score: 2.56
+Because: Matched because energy similarity (+1.7); acoustic preference.
+
+Coffee Shop Stories - Score: 2.55
+Because: Matched because energy similarity (+1.7); acoustic preference.
+
+Summary for acoustic-trap:
+
+Rank  Song                       Score Reason                                                                
+----- ------------------------ ------- ----------------------------------------------------------------------
+1     Spacewalk Thoughts          2.76 energy similarity (+1.8); acoustic preference                         
+2     Storm Runner                2.68 genre match (+2.0); energy similarity (+0.6); acoustic preference     
+3     Midnight Waltz              2.62 energy similarity (+1.7); acoustic preference                         
+4     Library Rain                2.56 energy similarity (+1.7); acoustic preference                         
+5     Coffee Shop Stories         2.55 energy similarity (+1.7); acoustic preference       
 ```
 
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or demo video link here -->
@@ -106,25 +163,19 @@ Because: Matched because energy similarity (+2.0); acoustic preference.
 
 ## Experiments You Tried
 
-Use this section to document the experiments you ran. For example:
+I tested the recommender with several user profiles to see how it behaved under different conditions.
 
-- What happened when you changed the weight on genre from 2.0 to 0.5
-- What happened when you added tempo or valence to the score
-- How did your system behave for different types of users
+- Happy-pop profile: I used a profile that wanted pop, happy, and high-energy music. The top results mostly included energetic songs like “Gym Hero” and “Sunrise City.”
+- Acoustic profile: I tested a profile that wanted a more acoustic and lower-energy experience. The results shifted toward calmer songs like “Spacewalk Thoughts” and “Midnight Waltz.”
+- Conflicting profile: I tested a profile that wanted a sad mood but very high energy. The results still favored songs with strong energy scores, which showed that the system can overvalue one feature when the preferences conflict.
+These experiments showed that the system responds strongly to the features it uses most, especially energy and acousticness.
 
 ---
 
 ## Limitations and Risks
 
-Summarize some limitations of your recommender.
-
-Examples:
-
-- It only works on a tiny catalog
-- It does not understand lyrics or language
-- It might over favor one genre or mood
-
-You will go deeper on this in your model card.
+This recommender is simple and works best on a small, controlled dataset. It can miss important details about real musical taste and may make recommendations that feel reasonable but are not truly personal.
+There is also a risk of bias. The system can over-focus on a few features, such as energy or acousticness, and may repeat similar kinds of songs instead of offering a broader range of options. Because the catalog is small, it may not generalize well to other users or genres. It should be treated as a classroom example rather than a serious production recommendation system.
 
 ---
 
