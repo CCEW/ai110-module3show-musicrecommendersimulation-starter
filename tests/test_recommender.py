@@ -1,4 +1,4 @@
-from src.recommender import Song, UserProfile, Recommender
+from src.recommender import Song, UserProfile, Recommender, score_song
 
 def make_small_recommender() -> Recommender:
     songs = [
@@ -59,3 +59,15 @@ def test_explain_recommendation_returns_non_empty_string():
     explanation = rec.explain_recommendation(user, song)
     assert isinstance(explanation, str)
     assert explanation.strip() != ""
+
+
+def test_score_song_returns_numeric_score_and_reasons():
+    user_prefs = {"genre": "pop", "mood": "happy", "energy": 0.8}
+    song = {"genre": "pop", "mood": "happy", "energy": 0.75, "acousticness": 0.2}
+
+    score, reasons = score_song(user_prefs, song)
+
+    assert isinstance(score, float)
+    assert isinstance(reasons, list)
+    assert any("genre match" in reason for reason in reasons)
+    assert any("mood match" in reason for reason in reasons)
