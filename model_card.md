@@ -2,110 +2,72 @@
 
 ## 1. Model Name  
 
-Give your model a short, descriptive name.  
-Example: **VibeFinder 1.0**  
+musicFinder 4
 
 ---
 
 ## 2. Intended Use  
 
-Describe what your recommender is designed to do and who it is for. 
+This recommender is meant to suggest songs that fit a simple user taste profile. It is designed for classroom use and small experiments, not for a real music app that needs very personal or careful recommendations.
 
-Prompts:  
-
-- What kind of recommendations does it generate  
-- What assumptions does it make about the user  
-- Is this for real users or classroom exploration  
+Its goal is to match songs to a user who says what genre, mood, energy level, and acoustic preference they want.
 
 ---
 
 ## 3. How the Model Works  
 
-Explain your scoring approach in simple language.  
+The system looks at a few song features and compares them to the user’s preferences. It checks genre, mood, energy level, and how acoustic the song sounds. A song gets a higher score when it matches these features well.
 
-Prompts:  
-
-- What features of each song are used (genre, energy, mood, etc.)  
-- What user preferences are considered  
-- How does the model turn those into a score  
-- What changes did you make from the starter logic  
-
-Avoid code here. Pretend you are explaining the idea to a friend who does not program.
+In plain terms, the model tries to answer: “Which songs feel like the kind of music this user seems to want?”
 
 ---
 
 ## 4. Data  
 
-Describe the dataset the model uses.  
-
-Prompts:  
-
-- How many songs are in the catalog  
-- What genres or moods are represented  
-- Did you add or remove data  
-- Are there parts of musical taste missing in the dataset  
+The system uses a small dataset with 20 songs. Each song includes information like title, artist, genre, mood, energy, and acousticness. The dataset covers many styles, but it is still limited. It does not include more detailed features like lyrics, artist history, or personal listening habits.
 
 ---
 
 ## 5. Strengths  
 
-Where does your system seem to work well  
+The recommender works well when a user has clear and simple preferences. For example, it does a decent job when someone wants happy pop songs or calm acoustic songs.
 
-Prompts:  
-
-- User types for which it gives reasonable results  
-- Any patterns you think your scoring captures correctly  
-- Cases where the recommendations matched your intuition  
+It also gives sensible results when the user clearly prefers one style over another. In those cases, the top songs usually line up with the user’s stated mood and energy level.
 
 ---
 
 ## 6. Limitations and Bias 
 
-Where the system struggles or behaves unfairly. 
+One weakness is that the system can over-focus on energy and acousticness. A song with the right energy level may rank very high even if its genre or mood does not really fit the user.
 
-Prompts:  
+This can create a filter bubble. The recommender may keep showing songs that are similar in a narrow way, instead of exploring a wider range of music.
 
-- Features it does not consider  
-- Genres or moods that are underrepresented  
-- Cases where the system overfits to one preference  
-- Ways the scoring might unintentionally favor some users  
+It also struggles with conflicting preferences. If a user says they want something sad but very energetic, the system may still favor songs that match the energy part more strongly.
 
 ---
 
 ## 7. Evaluation  
 
-How you checked whether the recommender behaved as expected. 
+I tested the system with a few different user profiles. I compared a happy pop profile, an acoustic profile, and a conflicting profile that wanted a sad mood but high energy.
 
-Prompts:  
+The happy pop profile mostly favored bright, energetic songs like “Gym Hero” and “Sunrise City.” The acoustic profile shifted toward calmer songs like “Spacewalk Thoughts” and “Midnight Waltz.” This makes sense because the system is strongly rewarding energy and acousticness.
 
-- Which user profiles you tested  
-- What you looked for in the recommendations  
-- What surprised you  
-- Any simple tests or comparisons you ran  
-
-No need for numeric metrics unless you created some.
+The conflicting profile showed that the recommender can still pick songs based mostly on one feature. That was useful to see because it helped reveal where the system is strongest and where it is too simple.
 
 ---
 
 ## 8. Future Work  
 
-Ideas for how you would improve the model next.  
-
-Prompts:  
-
-- Additional features or preferences  
-- Better ways to explain recommendations  
-- Improving diversity among the top results  
-- Handling more complex user tastes  
+If I kept developing this, I would add more features such as tempo, danceability, and valence. I would also make the scoring less dependent on one or two signals so it feels more balanced. I would also improve how the system handles conflicting or unusual preferences. A better version could mix different signals more fairly and show more variety in the final recommendations.
 
 ---
 
 ## 9. Personal Reflection  
 
-A few sentences about your experience.  
+My biggest learning moment was realizing that a recommender can look smart even when it is using very simple rules. I thought the system would need a lot of complex logic, but a few clear signals like genre, mood, energy, and acousticness were enough to produce accurate recommendations.
 
-Prompts:  
+Using AI tools helped me move faster, especially when I was writing code, and explaining what I was seeing. They were especially helpful for turning raw thoughts into a working structure.
 
-- What you learned about recommender systems  
-- Something unexpected or interesting you discovered  
-- How this changed the way you think about music recommendation apps  
+I was surprised by how simple algorithms can still feel like real recommendations. A basic scoring system can make suggestions that seem personal, even though it is really just matching a obvious features.
+
+If I extended this project, I would try adding more features like tempo, danceability, etc. I would also want to make the recommendations more balanced and less biased so the system feels more thoughtful and less repetitive.
